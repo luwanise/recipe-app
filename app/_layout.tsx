@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "@/assets/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons"
+import { setStatusBarStyle } from "expo-status-bar";
 
 export default function RootLayout() {
   return <Stack>
@@ -11,7 +12,7 @@ export default function RootLayout() {
         title: "HOME",
         headerTitleAlign: "center",
         headerTitleStyle: styles.headerTitle,
-        statusBarBackgroundColor: "#000",
+        statusBarBackgroundColor: Colors.background,
         headerStyle: styles.header,
         headerLeft: () => (
           <TouchableOpacity>
@@ -19,6 +20,13 @@ export default function RootLayout() {
           </TouchableOpacity>
         )
       }}/>
+
+      <Stack.Screen
+        name="RecipeDetails"
+        options={{
+          headerShown: false,
+          statusBarBackgroundColor: Colors.background
+        }} />
       
   </Stack>;
 }

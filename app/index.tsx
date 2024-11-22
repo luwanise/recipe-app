@@ -4,11 +4,11 @@ import { useRecipes } from "@/hooks/useRecipes";
 
 export default function Index() {
 
-  const { recipes, refreshing, onRefresh } = useRecipes();
+  const { recipes, refreshing, loadRecipes } = useRecipes();
 
   return (
     <View style={styles.container}>
-      <RecipeList recipes={recipes} refreshing={refreshing} onRefresh={onRefresh} />
+      <RecipeList recipes={recipes} refreshing={refreshing} onRefresh={loadRecipes} />
     </View>
   );
 }

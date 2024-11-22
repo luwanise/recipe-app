@@ -7,17 +7,13 @@ export const useRecipes = () => {
     const [refreshing, setRefreshing] = useState(false);
 
     const loadRecipes = async() => {
+        setRefreshing(true);
         const recipes = await getRandomRecipes();
         setRecipes(recipes);
-    }
-
-    const onRefresh = async () => {
-        setRefreshing(true);
-        await loadRecipes();
-        setRefreshing(false);
+        setRefreshing(false)
     }
 
     useEffect(() => { loadRecipes() }, []);
 
-    return { recipes, refreshing, onRefresh };
+    return { recipes, refreshing, loadRecipes };
 };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { processResponse } from '../helper/processResponse';
+import { processRecipeList } from '../helper/processRecipeList';
 import { Recipe } from '@/models/Recipe';
 
 const apiKey = process.env.EXPO_PUBLIC_API_KEY;
@@ -17,7 +17,7 @@ export const getRandomRecipes = async(count: number = 10): Promise<Recipe[]> => 
             }
         );
 
-        return processResponse(response)
+        return processRecipeList(response)
     } catch (error) {
         console.error('Error fetching random recipes:', error);
         throw error;

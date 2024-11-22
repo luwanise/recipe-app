@@ -1,13 +1,21 @@
 import { Recipe } from "@/models/Recipe";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Colors } from "@/assets/Colors";
+import { Colors } from "@/assets/Colors"
+import { router } from "expo-router";
 
 interface RecipeItemProps {
     item: Recipe;
 }
 export default function RecipeItem({item}: RecipeItemProps) {
     return (
-        <TouchableOpacity style={styles.recipeItem}>
+        
+        <TouchableOpacity 
+            style={styles.recipeItem} 
+            onPress={() => router.push({
+                pathname: "/RecipeDetails",
+                params: { recipeId: item.id }
+            })}
+        >
             <Image 
                 style={styles.recipeImage}
                 source={{ uri: item.imageUrl }}

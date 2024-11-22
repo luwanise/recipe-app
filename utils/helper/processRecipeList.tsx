@@ -1,6 +1,6 @@
 import { Recipe } from "@/models/Recipe";
 
-export function processResponse(response: any): Recipe[] {
+export function processRecipeList(response: any): Recipe[] {
     const recipes: Recipe[] = [];
     
     for (let recipe of response.data.recipes){
