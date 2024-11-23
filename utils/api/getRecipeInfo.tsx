@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { RecipeInfo } from '@/models/RecipeInfo';
 import { processRecipeInfo } from '../helper/processRecipeInfo';
-
-const apiKey = process.env.EXPO_PUBLIC_API_KEY;
-const baseUrl = 'https://api.spoonacular.com';
+import { apiKey, baseUrl } from '@/constants/apiDetails';
 
 export const getRecipeInfo = async(recipeId: string): Promise<RecipeInfo> => {
     try {

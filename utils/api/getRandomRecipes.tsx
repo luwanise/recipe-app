@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { processRecipeList } from '../helper/processRecipeList';
 import { Food } from '@/models/Food';
-
-const apiKey = process.env.EXPO_PUBLIC_API_KEY;
-const baseUrl = 'https://api.spoonacular.com';
+import { apiKey, baseUrl } from '@/constants/apiDetails';
 
 export const getRandomRecipes = async(count: number = 10): Promise<Food[]> => {
     try {

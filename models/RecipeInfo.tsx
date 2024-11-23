@@ -1,4 +1,4 @@
-import { Ingredient } from "./Ingredient";
+import { Food } from "./Food";
 
 export type RecipeInfo = {
     image: string;
@@ -6,6 +6,6 @@ export type RecipeInfo = {
     dishType: string;
     timeRequired: number;
     summary: string;
-    ingredients: Ingredient[];
+    ingredients: Food[];
     instructions: string;
 }
