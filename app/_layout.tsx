@@ -2,7 +2,6 @@ import { Stack } from "expo-router";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "@/assets/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons"
-import { setStatusBarStyle } from "expo-status-bar";
 
 export default function RootLayout() {
   return <Stack>
@@ -27,6 +26,13 @@ export default function RootLayout() {
           headerShown: false,
           statusBarBackgroundColor: Colors.background
         }} />
+
+      <Stack.Screen
+        name="ViewIngredients"
+        options={{
+          headerShown: false,
+          statusBarBackgroundColor: Colors.background
+        }}/>
       
   </Stack>;
 }

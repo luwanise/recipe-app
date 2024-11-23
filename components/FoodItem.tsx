@@ -1,28 +1,32 @@
-import { Recipe } from "@/models/Recipe";
+import { Food } from "@/models/Food";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Colors } from "@/assets/Colors"
 import { router } from "expo-router";
 
 interface RecipeItemProps {
-    item: Recipe;
+    item: Food;
 }
-export default function RecipeItem({item}: RecipeItemProps) {
+export default function FoodItem({item}: RecipeItemProps) {
     return (
         
         <TouchableOpacity 
             style={styles.recipeItem} 
-            onPress={() => router.push({
-                pathname: "/RecipeDetails",
-                params: { recipeId: item.id }
-            })}
+            onPress={() => {
+                if (item.shouldNavigate){
+                    router.push({
+                        pathname: "/RecipeDetails",
+                        params: { recipeId: item.id }
+                    })
+                }
+            }}
         >
             <Image 
                 style={styles.recipeImage}
-                source={{ uri: item.imageUrl }}
+                source={{ uri: item.image }}
             />
             <View style={styles.textContainer}>
-                <Text style={styles.recipeTitle}>{item.title}</Text>
-                <Text style={styles.recipeCategory}>{item.dishType.toUpperCase()}</Text>
+                <Text style={styles.recipeTitle}>{item.name}</Text>
+                <Text style={styles.recipeCategory}>{item.extraInfo.toUpperCase()}</Text>
             </View>
         </TouchableOpacity>
     )

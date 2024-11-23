@@ -1,9 +1,9 @@
 import { Colors } from "@/assets/Colors";
 import useRecipeDetails from "@/hooks/useRecipeDetails";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { StatusBar } from 'expo-status-bar';
-import { router } from "expo-router";
+import RecipeButton from "@/components/RecipeButton";
+import BackButton from "@/components/BackButton";
 
 export default function RecipeDetails() {
     
@@ -11,26 +11,19 @@ export default function RecipeDetails() {
 
     return (
         <View style={styles.container}>
-            {/* <StatusBar style="light" translucent backgroundColor="transparent" /> */}
-            <Image
-                style={styles.recipeImage}
-                source={{ uri: recipeInfo?.image }}
-            />
-            <TouchableOpacity style={styles.back} onPress={router.back}>
-                <Ionicons name="chevron-back-circle" size={35} color={Colors.primary}/>
-            </TouchableOpacity>
-            <Text style={styles.recipeTitle}>{recipeInfo?.title}</Text>
-            <Text style={styles.recipeCategory}>{recipeInfo?.dishType.toUpperCase()}</Text>
+            <Image style={styles.recipeImage} source={{ uri: recipeInfo?.image }} />
+            <BackButton name={"chevron-back-circle"} size={35} />
+            
+            <Text style={styles.recipeTitle}> {recipeInfo?.title} </Text>
+            <Text style={styles.recipeCategory}> {recipeInfo?.dishType.toUpperCase()} </Text>
+            
             <View style={styles.prepTimeContainer}>
                 <Ionicons name="stopwatch-outline" size={20} color={Colors.text}/>
                 <Text style={styles.recipePrepTime}>{recipeInfo?.timeRequired} minutes</Text>
             </View>
-            <TouchableOpacity style={styles.viewIngredientsBtn}>
-                <Text style={styles.viewIngredientsTxt}>View Ingredients</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.viewInstructionsBtn}>
-                <Text style={styles.viewInstructionsTxt}>View Instructions</Text>
-            </TouchableOpacity>
+            
+            <RecipeButton text="View Ingredients" route="/ViewIngredients" data={recipeInfo?.ingredients}/>
+            <RecipeButton text="View Instructions" route="/" data={recipeInfo?.instructions}/>
         </View>
     )
 }
@@ -40,11 +33,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: Colors.background,
-    },
-    back: {
-        position: 'absolute',
-        top: 20,
-        start: 10,
     },
     recipeImage: {
         width: "100%",
@@ -76,32 +64,4 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: Colors.text
     },
-    viewIngredientsBtn: {
-        width: "80%",
-        marginTop: 20,
-        borderWidth: 1,
-        borderColor: Colors.primary,
-        borderRadius: 20,
-        padding: 15,
-    },
-    viewIngredientsTxt: {
-        color: Colors.primary,
-        fontSize: 15,
-        fontWeight: "semibold",
-        textAlign: "center"
-    },
-    viewInstructionsBtn: {
-        width: "80%",
-        marginTop: 20,
-        borderWidth: 1,
-        borderColor: Colors.primary,
-        borderRadius: 20,
-        padding: 15,
-    },
-    viewInstructionsTxt: {
-        color: Colors.primary,
-        fontSize: 15,
-        fontWeight: "semibold",
-        textAlign: "center"
-    }
 })

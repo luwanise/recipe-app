@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import RecipeList from "@/components/RecipeList";
+import FoodList from "@/components/FoodList";
 import { useRecipes } from "@/hooks/useRecipes";
 
 export default function Index() {
@@ -8,7 +8,7 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <RecipeList recipes={recipes} refreshing={refreshing} onRefresh={loadRecipes} />
+      <FoodList data={recipes} refreshing={refreshing} onRefresh={loadRecipes} />
     </View>
   );
 }

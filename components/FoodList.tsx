@@ -1,20 +1,20 @@
 import { FlatList, RefreshControl, StyleSheet } from "react-native";
-import { Recipe } from "@/models/Recipe";
-import RecipeItem from "./RecipeItem";
+import { Food } from "@/models/Food";
+import FoodItem from "./FoodItem";
 import { Colors } from "@/assets/Colors";
 
 interface RecipeListProps {
-    recipes: Recipe[];
+    data: Food[];
     refreshing: boolean;
     onRefresh: () => void;
 }
-export default function RecipeList({recipes, refreshing, onRefresh}: RecipeListProps){
+export default function FoodList({data: data, refreshing, onRefresh}: RecipeListProps){
     return (
         <FlatList
             style={styles.container}
-            data={recipes}
-            renderItem={({item}) => <RecipeItem item={item}/>}
-            keyExtractor={(recipe) => recipe.id.toString()}
+            data={data}
+            renderItem={({item}) => <FoodItem item={item}/>}
+            keyExtractor={(item) => item.id.toString()}
             numColumns={2}
             columnWrapperStyle={styles.colWrapper}
             contentContainerStyle={styles.contentContainer}
