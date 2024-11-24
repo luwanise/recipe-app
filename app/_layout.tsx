@@ -33,6 +33,13 @@ export default function RootLayout() {
           headerShown: false,
           statusBarBackgroundColor: Colors.background
         }}/>
+
+      <Stack.Screen
+        name="ViewInstructions"
+        options={{
+          headerShown: false,
+          statusBarBackgroundColor: Colors.background
+        }}/>
       
   </Stack>;
 }

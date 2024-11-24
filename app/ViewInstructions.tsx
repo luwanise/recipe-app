@@ -1,20 +1,23 @@
 import { Colors } from "@/assets/Colors";
 import BackButton from "@/components/BackButton";
-import FoodList from "@/components/FoodList";
 import { useLocalSearchParams } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
-export default function ViewIngredients() {
+export default function ViewInstructions() {
     const params = useLocalSearchParams();
     const data = JSON.parse(params.data.toString());
+    // Remove HTML tags
+    const plainText = data.replace(/<\/?[^>]+(>|$)/g, '');
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <BackButton name={"chevron-back"} size={27} />
-                <Text style={styles.headerTitle}>Ingredients</Text>
+                <Text style={styles.headerTitle}>How it's Made!</Text>
             </View>
-            <FoodList data={data} refreshing={false} onRefresh={() => {}} />
+            <ScrollView>
+                <Text style={styles.body}>{plainText}</Text>
+            </ScrollView>
         </View>
     )
 }
@@ -38,4 +41,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
     },
+    body: {
+        color: Colors.text,
+        fontSize: 20,
+        padding: 10,
+    }
 })
