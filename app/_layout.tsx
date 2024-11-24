@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import { Colors } from "@/assets/Colors";
-import Ionicons from "@expo/vector-icons/Ionicons"
 
 export default function RootLayout() {
   return <Stack>
@@ -13,11 +12,6 @@ export default function RootLayout() {
         headerTitleStyle: styles.headerTitle,
         statusBarBackgroundColor: Colors.background,
         headerStyle: styles.header,
-        headerLeft: () => (
-          <TouchableOpacity>
-            <Ionicons name="menu" size={27} color={Colors.primary}/>
-          </TouchableOpacity>
-        )
       }}/>
 
       <Stack.Screen

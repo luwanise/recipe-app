@@ -12,7 +12,10 @@ export default function RecipeDetails() {
     return (
         <View style={styles.container}>
             { loading ? (
-            <ActivityIndicator style={styles.loading} size="large" color={Colors.primary} />
+            <View style={styles.loading}>
+                <Text style={styles.recipeTitle}> Loading Recipe Details... </Text>
+                <ActivityIndicator size="large" color={Colors.primary} />
+            </View>
         ): (
             <View style={styles.content}>
                 <Image style={styles.recipeImage} source={{ uri: recipeInfo?.image }} />
