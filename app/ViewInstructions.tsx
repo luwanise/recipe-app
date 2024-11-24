@@ -1,6 +1,7 @@
 import { Colors } from "@/assets/Colors";
 import BackButton from "@/components/BackButton";
 import { useLocalSearchParams } from "expo-router";
+import { Key } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function ViewInstructions() {
@@ -8,6 +9,10 @@ export default function ViewInstructions() {
     const data = JSON.parse(params.data.toString());
     // Remove HTML tags
     const plainText = data.replace(/<\/?[^>]+(>|$)/g, '');
+    // Split the text into sentences
+    const sentences = plainText.split(/(?<=\.)\s+/);
+    
+
 
     return (
         <View style={styles.container}>
@@ -16,7 +21,11 @@ export default function ViewInstructions() {
                 <Text style={styles.headerTitle}>How it's Made!</Text>
             </View>
             <ScrollView>
-                <Text style={styles.body}>{plainText}</Text>
+                {sentences.map((sentence: string, index: number) => (
+                        <Text key={index} style={styles.body}>
+                            {sentence.trim()}
+                        </Text>
+                    ))}
             </ScrollView>
         </View>
     )
