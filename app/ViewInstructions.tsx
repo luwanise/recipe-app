@@ -1,7 +1,6 @@
 import { Colors } from "@/assets/Colors";
 import BackButton from "@/components/BackButton";
 import { useLocalSearchParams } from "expo-router";
-import { Key } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function ViewInstructions() {
