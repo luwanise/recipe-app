@@ -7,7 +7,7 @@ import BackButton from "@/components/BackButton";
 
 export default function RecipeDetails() {
     
-    const {recipeInfo, loading } = useRecipeDetails()
+    const {recipeInfo, loading } = useRecipeDetails();
 
     return (
         <View style={styles.container}>

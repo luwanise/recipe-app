@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 
 export const useRecipes = () => {
     const [recipes, setRecipes] = useState<Food[]>([]);
-    const [refreshing, setRefreshing] = useState(false);
+    const [refreshing, setRefreshing] = useState(true);
 
     const loadRecipes = async() => {
-        setRefreshing(true);
         const recipes = await getRandomRecipes();
         setRecipes(recipes);
         setRefreshing(false)
